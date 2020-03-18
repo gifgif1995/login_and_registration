@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container shadow">
+        <div class="row">
+            <div class="col justify-content-center">
+                <h1 class="text-center">Registration</h1>
+            </div>
+            <div class="col"></div>
+            <div class="col text-center">
+                <h1 class="text-center">Login</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col justify-content-center">
+                <form action="/register" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                            <li {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <label class="custom-title" for="first_name">First Name</label>
+                        <input type="text" class="form-control" id="first_name" name="first_name">
+                    </div>
+                    <div class="form-group">
+                        <label class="custom-title" for="last_name">Last Name</label>
+                        <input type="text" class="form-control" id="last_name" name="last_name">
+                    </div>
+                    <div class="form-group">
+                        <label class="custom-title" for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label class="custom-title" for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+                    <div class="form-group">
+                        <label class="custom-title" for="confirm_password">Confirm Password</label>
+                        <input type="password" class="form-control" id="confirm_password" name="confirm_password">
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="text-center btn btn-success">Register</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col"></div>
+            <div class="col">
+                <form action="/login" method="POST">
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="email" class="custom-title">Email</label>
+                        <input type="email" name="email" id="email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="custom-title">Password</label>
+                        <input type="password" name="password" id="password" class="form-control">
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="text-center btn btn-success">Login</button>
+                    </div>
+                </form>
+            </div>
+           
+
+        </div>
+</body>
+
+</html>
